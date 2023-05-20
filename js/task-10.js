@@ -27,25 +27,25 @@ const refs = {
   inputEl: document.querySelector('[type="number"]'),
   boxesContainer: document.querySelector("#boxes"),
 };
-
-console.dir(refs.inputEl);
-
-const onButtonCreateClick = (event) => {
-  const newBox = document.createElement("div");
-  newBox.style.width = "30px";
-  newBox.style.height = "30px";
-  newBox.style.backgroundColor = getRandomHexColor();
-
-  refs.boxesContainer.append(newBox);
+let inputQuantity = 0;
+const onSetQuantity = (event) => {
+  inputQuantity = event.currentTarget.valueAsNumber;
 };
-const onButtonCreateDestroy = () => {
+
+const createBoxes = (event) => {
+  for (let i = 0; i < 5; i += 1) {
+    const newBox = document.createElement("div");
+    newBox.style.width = "30px";
+    newBox.style.height = "30px";
+    newBox.style.backgroundColor = getRandomHexColor();
+
+    refs.boxesContainer.append(newBox);
+  }
+};
+const destroyBoxes = () => {
   refs.boxesContainer.innerHTML = "";
 };
 
-const onSetNumber = () => {
-  console.log(refs.inputEl.value);
-};
-
-refs.buttonCreate.addEventListener("click", onButtonCreateClick);
-refs.buttonDestroy.addEventListener("click", onButtonCreateDestroy);
-refs.inputEl.addEventListener("change", onSetNumber);
+refs.buttonCreate.addEventListener("click", createBoxes);
+refs.buttonDestroy.addEventListener("click", destroyBoxes);
+refs.inputEl.addEventListener("input", onSetQuantity);

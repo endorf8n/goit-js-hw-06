@@ -19,7 +19,7 @@ const formEl = document.querySelector(".login-form");
 const onSubmitClick = (event) => {
   event.preventDefault();
 
-  const { email, password } = event.target.elements;
+  const { email, password } = event.currentTarget.elements;
 
   if (email.value === "" || password.value === "") {
     alert("All fields must be filled!");
@@ -30,7 +30,7 @@ const onSubmitClick = (event) => {
     });
   }
 
-  event.target.reset();
+  event.currentTarget.reset();
 };
 
 formEl.addEventListener("submit", onSubmitClick);
