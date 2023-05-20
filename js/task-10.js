@@ -27,23 +27,32 @@ const refs = {
   inputEl: document.querySelector('[type="number"]'),
   boxesContainer: document.querySelector("#boxes"),
 };
+
 let inputQuantity = 0;
 const onSetQuantity = (event) => {
   inputQuantity = event.currentTarget.valueAsNumber;
 };
+let boxWidth = 30;
+let boxHeight = 30;
 
 const createBoxes = (event) => {
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < inputQuantity; i += 1) {
+    boxWidth += 10;
+    boxHeight += 10;
+
     const newBox = document.createElement("div");
-    newBox.style.width = "30px";
-    newBox.style.height = "30px";
+    newBox.style.width = boxWidth + "px";
+    newBox.style.height = boxHeight + "px";
     newBox.style.backgroundColor = getRandomHexColor();
 
     refs.boxesContainer.append(newBox);
   }
+  return refs.boxesContainer;
 };
+
 const destroyBoxes = () => {
   refs.boxesContainer.innerHTML = "";
+  refs.inputEl.value = "";
 };
 
 refs.buttonCreate.addEventListener("click", createBoxes);
