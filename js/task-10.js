@@ -32,6 +32,7 @@ let inputQuantity = 0;
 const onSetQuantity = (event) => {
   inputQuantity = event.currentTarget.valueAsNumber;
 };
+
 let boxWidth = 30;
 let boxHeight = 30;
 
@@ -47,7 +48,6 @@ const createBoxes = (event) => {
 
     refs.boxesContainer.append(newBox);
   }
-  return refs.boxesContainer;
 };
 
 const destroyBoxes = () => {
