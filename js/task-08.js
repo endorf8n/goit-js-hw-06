@@ -12,9 +12,8 @@ const onSubmitClick = (event) => {
       email: email.value,
       password: password.value,
     });
+    event.currentTarget.reset();
   }
-
-  event.currentTarget.reset();
 };
 
 formEl.addEventListener("submit", onSubmitClick);
